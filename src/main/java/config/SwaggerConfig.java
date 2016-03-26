@@ -9,6 +9,7 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.PropertySource;
 import org.springframework.context.annotation.Import;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
+import springfox.documentation.builders.ApiInfoBuilder;
 import springfox.documentation.service.ApiInfo;
 import springfox.documentation.spi.DocumentationType;
 import springfox.documentation.spring.web.plugins.Docket;
@@ -22,17 +23,15 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2;
 @PropertySource("classpath:swagger.properties")
 @Import(SwaggerUiConfiguration.class)
 public class SwaggerConfig {
+
     @Bean
     ApiInfo apiInfo() {
-        ApiInfo apiInfo = new ApiInfo(
-        "RF Api Documentation",
-        "RF Api Documentation",
-        "1.0",
-        "",
-        "www.bmc.com",
-        "BMC License",
-        "http://www.bmc.com/support/licensing-passwords/support-licensing-passwords.html" );
-        return apiInfo;
+    	return new ApiInfoBuilder()
+    			.title("My Artifact")
+    			.description("My Artifact API Documentation")
+    			.version("1.0")
+    			.build()
+         ;
     }
 
     @Bean
@@ -40,7 +39,9 @@ public class SwaggerConfig {
         return new Docket(DocumentationType.SWAGGER_2)
         		.apiInfo(apiInfo())
         		.protocols(new HashSet<String>(Arrays.asList("http")))
-        		.useDefaultResponseMessages(false); //https://github.com/springfox/springfox/issues/632
+        		.useDefaultResponseMessages(false) //https://github.com/springfox/springfox/issues/632
+        		;
     }
+
 
 }
