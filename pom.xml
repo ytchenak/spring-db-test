@@ -1,0 +1,117 @@
+<project
+        xmlns="http://maven.apache.org/POM/4.0.0"
+        xmlns:xszi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd"
+        >
+    <modelVersion>4.0.0</modelVersion>
+    <groupId>my.groupid</groupId>
+    <artifactId>my-artifactId</artifactId>
+    <packaging>war</packaging>
+    <version>1.0.0</version>
+    <name>My Artifact</name>
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <java-version>1.8</java-version>
+		<springframework.version>4.2.4.RELEASE</springframework.version>
+		<servletapi.version>3.1.0</servletapi.version>
+		<hsqldb.version>2.3.2</hsqldb.version>
+		<swagger.version>2.4.0</swagger.version>
+    </properties>
+    
+    
+    <dependencies>
+        <!-- Spring -->
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-webmvc</artifactId>
+            <version>${springframework.version}</version>
+        </dependency>
+        
+		<!-- Spring JDBC -->
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-jdbc</artifactId>
+			<version>${springframework.version}</version>
+		</dependency>
+
+        <!--Servlet-->
+    	<dependency>
+			<groupId>javax.servlet</groupId>
+			<artifactId>javax.servlet-api</artifactId>
+			<version>${servletapi.version}</version>
+			<scope>provided</scope>
+		</dependency>
+
+		<!-- HyperSQL DB -->
+		<dependency>
+			<groupId>org.hsqldb</groupId>
+			<artifactId>hsqldb</artifactId>
+			<version>${hsqldb.version}</version>
+		</dependency>
+    
+    
+        <dependency>
+            <groupId>io.springfox</groupId>
+            <artifactId>springfox-swagger2</artifactId>
+            <version>${swagger.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>io.springfox</groupId>
+            <artifactId>springfox-swagger-ui</artifactId>
+            <version>${swagger.version}</version>
+        </dependency>
+    
+        <!-- Jackson -->
+        <dependency>
+            <groupId>com.fasterxml.jackson.core</groupId>
+            <artifactId>jackson-databind</artifactId>
+            <version>2.7.3</version>
+        </dependency>
+
+    
+    </dependencies>
+ 
+     <build>
+        <plugins>
+
+			<!-- embedded Jetty server, for testing -->
+			<plugin>
+				<groupId>org.eclipse.jetty</groupId>
+				<artifactId>jetty-maven-plugin</artifactId>
+				<version>9.3.8.v20160314</version>
+				<configuration>
+					<webApp>
+                        <contextPath>/app</contextPath >
+					</webApp>
+				</configuration>
+			</plugin>
+
+
+			<!-- embedded Tomcat server, for testing -->
+            <plugin>
+                <groupId>org.apache.tomcat.maven</groupId>
+                <artifactId>tomcat7-maven-plugin</artifactId>
+                <version>2.2</version>
+                <configuration>
+                    <path>/app</path>
+                </configuration>
+            </plugin>
+
+
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-war-plugin</artifactId>
+                <version>2.6</version>
+                <configuration>
+                    <failOnMissingWebXml>false</failOnMissingWebXml>
+                </configuration>
+            </plugin>
+
+
+        </plugins>
+	    
+        <finalName>MyArtifact</finalName>
+    </build>
+
+ 
+ </project>
