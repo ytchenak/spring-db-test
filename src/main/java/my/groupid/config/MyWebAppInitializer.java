@@ -5,9 +5,6 @@ import javax.servlet.ServletException;
 
 import org.springframework.web.servlet.support.AbstractAnnotationConfigDispatcherServletInitializer;
 
-import my.groupid.config.MyAppRootConfig;
-import my.groupid.config.MyWebMvcConfig;
-
 // replace web.xml to code-based configuration
 //http://docs.spring.io/spring/docs/current/spring-framework-reference/htmlsingle/#mvc-container-config
 //
@@ -30,10 +27,12 @@ public class MyWebAppInitializer extends AbstractAnnotationConfigDispatcherServl
 		return new String[] { "/" };
 	}
 
-	// @Override
-	// public void onStartup(ServletContext servletContext) throws ServletException {
-	// 	super.onStartup(servletContext);
-	// 	servletContext.setInitParameter("spring.profiles.active", "hsql");
-	// }
+	 @Override
+	 public void onStartup(ServletContext servletContext) throws ServletException {
+	 	super.onStartup(servletContext);
+	 	//servletContext.setInitParameter("spring.profiles.active", "hsql");
+	 	
+	 	
+	 }
 
 }
