@@ -1,9 +1,12 @@
 package my.groupid.config;
 
+import javax.servlet.Filter;
 import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 
 import org.springframework.web.servlet.support.AbstractAnnotationConfigDispatcherServletInitializer;
+
+import my.groupid.app.CORSFilter;
 
 // replace web.xml to code-based configuration
 //http://docs.spring.io/spring/docs/current/spring-framework-reference/htmlsingle/#mvc-container-config
@@ -34,5 +37,12 @@ public class MyWebAppInitializer extends AbstractAnnotationConfigDispatcherServl
 	 	
 	 	
 	 }
-
+	 
+	 //http://www.mkyong.com/spring-mvc/how-to-register-a-servlet-filter-in-spring-mvc/
+	 @Override
+	 protected Filter[] getServletFilters() {
+		return new Filter[]{new CORSFilter()};
+	 }
+	 
+	 
 }
