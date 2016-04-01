@@ -7,15 +7,13 @@ import javax.sql.DataSource;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
 
-// managing application life cycle (construct and destroy)
-// java annotation is used instead spring's interface InitializingBean, DisposableBean 
 
-@Component
-public class AppLifeCycle 
+@Service
+public class BirtSerivce 
 {
-	private final Logger logger = LoggerFactory.getLogger(AppLifeCycle.class);
+	private final Logger logger = LoggerFactory.getLogger(BirtSerivce.class);
 
 	@Autowired
 	DataSource dataSource;
@@ -23,7 +21,6 @@ public class AppLifeCycle
 	@PostConstruct
 	public void afterPropertiesSet() {
 		logger.info("++++++++++++++++++++++++++++start {} ++++++++++++++++", this.dataSource);
-		
 	}
 
 	@PreDestroy

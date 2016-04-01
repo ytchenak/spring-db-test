@@ -54,9 +54,9 @@ public class ReportDaoImpl implements ReportDao {
 
 		public ReportDTO mapRow(ResultSet rs, int rowNum) throws SQLException {
 			ReportDTO report = new ReportDTO();
-			report.setReportId(rs.getString("report_id"));
+			report.setReportId(rs.getString("id"));
 			report.setCategoryId(rs.getString("category_id"));
-			report.setReportName(rs.getString("report_name"));
+			report.setReportName(rs.getString("name"));
 			return report;
 		}
 	}
