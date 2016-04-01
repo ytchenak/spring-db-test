@@ -26,7 +26,7 @@ public class ReportDaoImpl implements ReportDao {
 	public void setDataSource(DataSource dataSource) {
 		this.jdbcTemplate = new JdbcTemplate(dataSource);
 	}
-	public List<ReportDTO> findByCategoryId(String categoryId) {
+	public List<ReportDTO> findByCategoryId(int categoryId) {
 		logger.info("+++ find catefory by {}", categoryId);
 		
         
@@ -41,6 +41,8 @@ public class ReportDaoImpl implements ReportDao {
 	}
 
 	public List<ReportDTO> findAll() {
+		
+		logger.info("+++ find all");
 		
 		String sql = "SELECT * FROM reports";
 		

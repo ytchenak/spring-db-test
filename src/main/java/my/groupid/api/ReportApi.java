@@ -31,13 +31,13 @@ public class ReportApi {
 	private static final Logger LOGGER = LoggerFactory.getLogger(ReportApi.class);
 	
 	@Autowired
-	private ReportDao reportDao;
+	public ReportDao reportDao;
 
 	@Autowired
-	private DbConnector dbConnector; 
+	public DbConnector dbConnector; 
 	
 	@Autowired
-	private DbPopulater dbPopulater;
+	public DbPopulater dbPopulater;
 	
 	@ApiOperation(value = "Getting Reports per Categories", notes = "", response = ReportDTO.class ,responseContainer="List")
 	@ApiResponses(value = { @ApiResponse(code = 200, message = "OK"),
@@ -46,7 +46,7 @@ public class ReportApi {
 	
 	  @RequestMapping(value = "/getReportsByCategory", produces =  { APPLICATION_JSON_VALUE }, method = RequestMethod.GET)
 	  public @ResponseBody ResponseEntity<List<ReportDTO>>  getReportsByCategory(
-			  @ApiParam(value = "Category Id") @RequestParam(value="category-id" , required=true) String categoryId) throws EmApiException{
+			  @ApiParam(value = "Category Id") @RequestParam(value="category-id" , required=true) int categoryId) throws EmApiException{
 
 			LOGGER.info("getting repors by category {}", categoryId);
 			

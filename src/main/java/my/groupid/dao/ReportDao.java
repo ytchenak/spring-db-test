@@ -6,7 +6,7 @@ import my.groupid.api.ReportDTO;
 
 public interface ReportDao {
 
-	List<ReportDTO> findByCategoryId(String categoryId);
+	List<ReportDTO> findByCategoryId(int categoryId);
 	
 	List<ReportDTO> findAll();
 
