@@ -2,17 +2,15 @@ package my.groupid.dao;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 import javax.sql.DataSource;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
-import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
 import org.springframework.stereotype.Repository;
 
 import my.groupid.api.ReportDTO;
@@ -22,26 +20,20 @@ public class ReportDaoImpl implements ReportDao {
 	
 	private final Logger logger = LoggerFactory.getLogger(ReportDaoImpl.class);
 	
-	NamedParameterJdbcTemplate namedParameterJdbcTemplate;
-	
+	private JdbcTemplate jdbcTemplate;
+
 	@Autowired
-	public void setDataSource(DataSource datasource) {
-		logger.info("+++ setting data source {}", datasource);
-		
-		this.namedParameterJdbcTemplate = new NamedParameterJdbcTemplate(datasource);
+	public void setDataSource(DataSource dataSource) {
+		this.jdbcTemplate = new JdbcTemplate(dataSource);
 	}
-	
 	public List<ReportDTO> findByCategoryId(String categoryId) {
 		logger.info("+++ find catefory by {}", categoryId);
 		
-		Map<String, Object> params = new HashMap<String, Object>();
-        params.put("categoryId", categoryId);
         
-		String sql = "SELECT * FROM reports WHERE category_id=:categoryId";
+		String sql = "SELECT * FROM reports WHERE category_id=" + categoryId;
 		
-        List<ReportDTO> results = namedParameterJdbcTemplate.query(
+        List<ReportDTO> results = jdbcTemplate.query(
                     sql,
-                    params,
                     new ReportMapper());
         
         return results;
@@ -52,7 +44,7 @@ public class ReportDaoImpl implements ReportDao {
 		
 		String sql = "SELECT * FROM reports";
 		
-        List<ReportDTO> result = namedParameterJdbcTemplate.query(sql, new ReportMapper());
+        List<ReportDTO> result = jdbcTemplate.query(sql, new ReportMapper());
         
         return result;
         

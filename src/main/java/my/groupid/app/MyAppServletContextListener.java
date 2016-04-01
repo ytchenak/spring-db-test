@@ -11,13 +11,9 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
 
-//http://www.mkyong.com/servlet/what-is-listener-servletcontextlistener-example/
-@Configuration
 @WebListener
 public class MyAppServletContextListener implements ServletContextListener{
 	
-	@Autowired
-	DataSource dataSource;
 	
 	private final Logger logger = LoggerFactory.getLogger(MyAppServletContextListener.class);
 	
@@ -30,6 +26,6 @@ public class MyAppServletContextListener implements ServletContextListener{
 	@Override
 	public void contextInitialized(ServletContextEvent sce) {
 		
-		logger.info("+++++++++++++++++++++ServletContextListener started, data source is {}", dataSource);	
+		logger.info("+++++++++++++++++++++ServletContextListener started");	
 	}
 }
