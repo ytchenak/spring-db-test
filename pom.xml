@@ -112,6 +112,39 @@
 			<scope>test</scope>
 		</dependency> 
 
+		<dependency>
+			<groupId>org.eclipse.birt.runtime</groupId>
+			<artifactId>org.eclipse.birt.runtime</artifactId>
+			<version>4.5.0a</version>
+		</dependency>
+ 
+ 		<dependency>		
+            <groupId>org.eclipse.birt.csvemitter</groupId>
+            <artifactId>org.eclipse.birt.csvemitter</artifactId>
+            <version>1.0</version>
+		</dependency>
+ 
+
+		<dependency>
+		    <groupId>com.oracle</groupId>
+		    <artifactId>ojdbc14</artifactId>
+		    <version>10.2.0.3.0</version>
+		</dependency>
+		
+		<dependency>
+		    <groupId>com.microsoft.sqlserver</groupId>
+		    <artifactId>sqljdbc4</artifactId>
+		    <version>4.0</version>
+		</dependency>
+
+		<dependency>
+			<groupId>postgresql</groupId>
+			<artifactId>postgresql</artifactId>
+			<version>9.1-901-1.jdbc4</version>
+		</dependency>
+
+
+
     </dependencies>
  
      <build>
@@ -152,6 +185,44 @@
         </plugins>
 	    
     </build>
+
+	<reporting>
+		<plugins>
+			<plugin>
+				<groupId>org.codehaus.mojo</groupId>
+				<artifactId>cobertura-maven-plugin</artifactId>
+				<version>2.7</version>
+			</plugin>
+		</plugins>
+	</reporting>
+
+      <repositories>
+        <repository>
+          <id>central</id>
+          <name>libs-release</name>
+          <url>http://emartifactorycloud.artifactoryonline.com/emartifactorycloud/libs-release</url>
+        </repository>
+      </repositories>
+
+      <pluginRepositories>
+        <pluginRepository>
+          <id>central</id>
+          <name>plugins-release</name>
+          <url>http://emartifactorycloud.artifactoryonline.com/emartifactorycloud/plugins-release</url>
+        </pluginRepository>
+      </pluginRepositories>
+	
+
+
+
+
+	<distributionManagement>
+		<repository>
+			<id>central</id>
+			<name>libs-release</name>
+			<url>http://emartifactorycloud.artifactoryonline.com/emartifactorycloud/libs-release-local</url>
+		</repository>
+	</distributionManagement>
 
  
  </project>
