@@ -1,0 +1,512 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<report xmlns="http://www.eclipse.org/birt/2005/design" version="3.2.23" id="1">
+    <property name="createdBy">Eclipse BIRT Designer Version 4.5.0.v201506092134 Build &lt;@BUILD@></property>
+
+    <list-property name="propertyBindings">
+        <structure>
+            <property name="name">odaDriverClass</property>
+            <property name="id">156</property>
+        </structure>
+        <structure>
+            <property name="name">odaURL</property>
+            <property name="id">156</property>
+        </structure>
+    </list-property>
+    <property name="units">in</property>
+    <method name="initialize"><![CDATA[
+
+//birtProxyClass=new Packages.com.bmc.services.BirtProxyClass();
+ 
+]]></method>
+    <method name="beforeFactory"><![CDATA[
+<!--         if(params["RowFetchSize"].value != null &amp;&amp; params["RowFetchSize"].value != '') {
+	reportContext.getReportRunnable().designHandle.getDesignHandle().findDataSet("main-dataset").setRowFetchLimit(params["RowFetchSize"].value);
+ -->}
+]]></method>
+    <property name="iconFile">/templates/blank_report.gif</property>
+    <property name="bidiLayoutOrientation">ltr</property>
+    <property name="imageDPI">96</property>
+    <parameters>
+        <scalar-parameter name="Service Name" id="181">
+            <text-property name="promptText" key="ServiceName"></text-property>
+            <property name="valueType">static</property>
+            <property name="isRequired">false</property>
+            <property name="dataType">string</property>
+            <property name="distinct">true</property>
+            <simple-property-list name="defaultValue">
+                <value type="constant"></value>
+            </simple-property-list>
+            <list-property name="selectionList"/>
+            <property name="paramType">simple</property>
+            <property name="controlType">text-box</property>
+            <structure name="format">
+                <property name="category">Unformatted</property>
+            </structure>
+        </scalar-parameter>
+        <scalar-parameter name="RowFetchSize" id="185">
+            <property name="hidden">true</property>
+            <property name="valueType">static</property>
+            <property name="isRequired">false</property>
+            <property name="dataType">string</property>
+            <property name="distinct">true</property>
+            <simple-property-list name="defaultValue">
+                <value type="constant"></value>
+            </simple-property-list>
+            <list-property name="selectionList"/>
+            <property name="paramType">simple</property>
+            <property name="controlType">text-box</property>
+            <structure name="format">
+                <property name="category">Unformatted</property>
+            </structure>
+        </scalar-parameter>
+        <scalar-parameter name="WhereClause" id="138">
+            <property name="hidden">true</property>
+            <property name="valueType">static</property>
+            <property name="isRequired">false</property>
+            <property name="dataType">string</property>
+            <property name="distinct">true</property>
+            <simple-property-list name="defaultValue">
+                <value type="constant"></value>
+            </simple-property-list>
+            <list-property name="selectionList"/>
+            <property name="paramType">simple</property>
+            <property name="controlType">text-box</property>
+            <structure name="format">
+                <property name="category">Unformatted</property>
+            </structure>
+        </scalar-parameter>
+    </parameters>
+
+    <data-sources>
+        <script-data-source name="services-jobs-ds" id="70"/>
+        <oda-data-source extensionID="org.eclipse.birt.report.data.oda.jdbc" name="services-jobs-params-ds" id="156">
+            <list-property name="privateDriverProperties">
+                <ex-property>
+                    <name>metadataBidiFormatStr</name>
+                    <value>ILYNN</value>
+                </ex-property>
+                <ex-property>
+                    <name>disabledMetadataBidiFormatStr</name>
+                </ex-property>
+                <ex-property>
+                    <name>contentBidiFormatStr</name>
+                    <value>ILYNN</value>
+                </ex-property>
+                <ex-property>
+                    <name>disabledContentBidiFormatStr</name>
+                </ex-property>
+            </list-property>
+            <property name="odaDriverClass">org.postgresql.Driver</property>
+            <property name="odaURL">jdbc:postgresql://vw-tlv-ctm-dv1u:5432/em900</property>
+            <property name="odaUser">emuser</property>
+            <encrypted-property name="odaPassword" encryptionID="base64">ZW1wYXNz</encrypted-property>
+        </oda-data-source>
+    </data-sources>
+
+    <data-sets>
+        <script-data-set name="main-dataset" id="71">
+  
+            <list-property name="resultSetHints">
+                <structure>
+                    <property name="position">1</property>
+                    <property name="name">SERVICE_KEY</property>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="position">2</property>
+                    <property name="name">SERVICE_NAME</property>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="position">3</property>
+                    <property name="name">SERVICE_ODAT</property>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="position">4</property>
+                    <property name="name">JOB_NAME</property>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="position">5</property>
+                    <property name="name">JOB_ORDER_ID</property>
+                    <property name="dataType">string</property>
+                </structure>
+            </list-property>
+  
+            <list-property name="columnHints">
+                <structure>
+                    <property name="columnName">SERVICE_KEY</property>
+                    <property name="alias">Service Key</property>
+                    <text-property name="displayName">Service Key</text-property>
+                </structure>
+                <structure>
+                    <property name="columnName">SERVICE_NAME</property>
+                    <property name="alias">Service Name</property>
+                    <text-property name="displayName">Service Name</text-property>
+                </structure>
+                <structure>
+                    <property name="columnName">SERVICE_ODAT</property>
+                    <property name="alias">Service Order Date</property>
+                    <text-property name="displayName">Service Order Date</text-property>
+                </structure>
+                <structure>
+                    <property name="columnName">JOB_NAME</property>
+                    <property name="alias">Job Name</property>
+                    <text-property name="displayName">Job Name</text-property>
+                </structure>
+                <structure>
+                    <property name="columnName">JOB_ORDER_ID</property>
+                    <property name="alias">Job Order Id</property>
+                    <text-property name="displayName">Order Id</text-property>
+                </structure>
+            </list-property>
+  
+            <structure name="cachedMetaData">
+                <list-property name="resultSet">
+                    <structure>
+                        <property name="position">1</property>
+                        <property name="name">Service Key</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                    <structure>
+                        <property name="position">2</property>
+                        <property name="name">Service Name</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                    <structure>
+                        <property name="position">3</property>
+                        <property name="name">Service Order Date</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                    <structure>
+                        <property name="position">4</property>
+                        <property name="name">Job Name</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                    <structure>
+                        <property name="position">5</property>
+                        <property name="name">Job Order Id</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                </list-property>
+            </structure>
+            
+            <property name="dataSource">services-jobs-ds</property>
+            <method name="open"><![CDATA[/**
+ * Created by rsukner on 26/07/2015.
+ */
+ logInfo("Prepering to execute service-jobs report");
+logInfo("Open event start"); 		
+ if(debug)
+      birtProxyClass = new Packages.com.bmc.birtproxy.BirtProxyClass(); 
+ else
+      birtProxyClass = new Packages.com.bmc.services.BirtProxyClass(); 
+      
+      birtProxyClass.createConnection();   
+
+
+
+function Service (p_serviceKey, p_serviceName, p_serviceOdat) {
+
+    this.service_key =  p_serviceKey;
+    this.service_name = p_serviceName;
+    this.service_odat = p_serviceOdat;
+    var bim_job_ammount;
+    var service_nets = [];
+
+    ////////////////SERVICE NET////////////////////////////
+    this.addServiceNet = function(p_serviceNet) {
+        service_nets.push(p_serviceNet);
+    }
+
+    this.getServiceNets = function() {
+        return service_nets;
+    }
+
+    //////////////BIM JOB AMMOUNT//////////////////////////////
+    this.getBimJobAmmount = function() {
+        return bim_job_ammount;
+    }
+    this.setBimJobAmmount = function(p_bimJobAmmount) {
+        bim_job_ammount = p_bimJobAmmount;
+    }
+
+}
+
+function ServiceNet (p_netName) {
+
+    this.net_name = p_netName;
+    var jobs = [];
+
+    ////////////////SERVICE NET////////////////////////////
+    this.addServiceNetJob = function(p_job) {
+        jobs.push(p_job);
+    }
+    this.getJobs = function() {
+        return jobs;
+    }
+
+    ////////////////////NET NAME//////////////////////////
+    this.setNetName = function(p_netName) {
+        this.net_name = p_netName;
+    }
+    this.getNetName = function () {
+        return this.net_name;
+    }
+
+}
+
+function Job(p_jobName, p_memName, p_jobOrderId) {
+
+    this.job_name = p_jobName;
+    this.mem_name = p_memName;
+    this.job_order_id = p_jobOrderId;
+    
+}
+
+
+
+function ReportDelegate () {
+
+    var services = [];
+    var totalJobAmount = 0;
+    
+    this.addService = function (p_service) {
+
+        services.push(p_service);
+    }
+    
+    this.getServices = function() {
+        return services;
+    }
+    
+     this.getTotalJobAmmount = function() {
+        return totalJobAmount;
+    }
+    
+    this.executeReport = function() {            
+        
+        
+        //var service_key_val = reportContext.getParameterValue("Service Key");
+       // var service_order_date_val = reportContext.getParameterValue("Service Order Date");
+        var service_name_val = reportContext.getParameterValue("Service Name");
+       
+        
+        var where = "";
+		//if (service_key_val != '') {
+		  // where += (where == "") ? " WHERE " : "AND ";
+		   //where += "SERVICE_KEY = '" + service_key_val + "'";
+		//}
+		//if (service_order_date_val != '') {
+		 //  where += (where == "") ? " WHERE " : "AND ";
+		  // where += "SERVICE_ODAT = '" + service_order_date_val + "'";
+		         
+		//}
+		if (service_name_val != '') {
+		   where += (where == "") ? " WHERE " : "AND ";
+		   where += "SERVICE_NAME = '" + service_name_val + "'";
+		 
+		}
+		
+		where += (where == "") ? " WHERE " : "AND ";
+        where += "BIM_AUTH_ID != '0'" ;
+		
+		
+      	 
+      	
+		var servicesSql = "SELECT SERVICE_KEY,SERVICE_NAME,SERVICE_ODAT FROM SERVICE_HIST" + where;		
+				
+		//"select sh.service_key,sh.service_name,sh.service_odat, shc.net_name from service_hist sh inner join service_hist_ctm shc on shc.service_key = sh.service_key" + where								
+		
+//		log(Common.Severity.info, "BIRT", "Service-Jobs", "open", servicesSql, " ", null);		
+		logDebug("Services qeary: "+servicesSql);
+		
+		services_temp = birtProxyClass.executeQuery(servicesSql,  3);
+		
+		if(services_temp.size() == 0 ) return;	
+		
+		for (var i = 0; i < services_temp.size(); i++) {
+		    var service_temp = services_temp.get(i);		    		   
+			var service = new Service(service_temp[0], service_temp[1], service_temp[2]);
+			services.push(service);
+		}
+		
+
+
+        for (var i = 0; i < services.length; i++) {
+
+            var service = services[i];
+			var serviceNetsSql = "SELECT NET_NAME FROM SERVICE_HIST_CTM WHERE SERVICE_KEY = '" + service.service_key + "'";		
+			
+			
+			//log(Common.Severity.info, "BIRT", "Service-Jobs", "open", serviceNetsSql, " ", null);
+			logDebug("serviceNets qeary: "+serviceNetsSql);
+					
+			servicenets_temp = birtProxyClass.executeQuery(serviceNetsSql,  1);
+			
+			if(servicenets_temp.size() == 0 ) continue;	
+			for (var j = 0; j < servicenets_temp.size(); j++) {
+		   		
+		   		var servicenet_temp = servicenets_temp.get(j);
+				var seviceNet = new ServiceNet(servicenet_temp[0]);
+				service.addServiceNet(seviceNet);
+				
+			}
+        }
+
+        // Start retreiveing the  jobs for each net, and begin writing each bulk to a csv file.
+        logInfo("Start retreiveing the  jobs for each net, and begin writing each bulk to a csv file");
+        for (var i = 0; i < services.length; i++) {
+			
+			var bimJobAmmount = 0;
+            var service = services[i];
+            
+            for (var j = 0; j < service.getServiceNets().length; j++) {
+                var serviceNet = service.getServiceNets()[j];
+
+                var bimSvcTableName = "A" + serviceNet.getNetName() + "BIMSVC";
+                var jobNetTableName = "A" + serviceNet.getNetName() + "JOB";
+                var sql = "SELECT BS.ORDER_ID, BS.SERVICE_ID, JB.JOB_NAME, JB.MEMNAME, JB.ODATE,JB.ORDER_ID  FROM " + bimSvcTableName +
+                    " BS INNER JOIN " + jobNetTableName + " JB ON JB.ORDER_ID = BS.ORDER_ID WHERE BS.SERVICE_ID = '" + service.service_key + "'";
+
+
+               // log(Common.Severity.info, "BIRT", "Service-Jobs", "open", sql, " ", null);
+				logDebug("qeary: "+sql);
+				netjobs_temp = birtProxyClass.executeQuery(sql,  6);
+					
+				if(netjobs_temp.size() == 0 ) continue;	
+				
+				bimJobAmmount += netjobs_temp.size();
+				
+				for (var k = 0; k < netjobs_temp.size(); k++) {
+										   		
+		   			var netjob_temp = netjobs_temp.get(k);
+					var job = new Job(netjob_temp[2],netjob_temp[3],netjob_temp[5]);
+					serviceNet.addServiceNetJob(job);
+										
+				}			           
+
+            }
+            
+
+            //log(Common.Severity.info, "BIRT", "Service-Jobs", "open", "Service " + service.service_key + " has " + bimJobAmmount + " jobs", " ", null);
+            logInfo("Service " + service.service_key + " has " + bimJobAmmount + " jobs");
+            
+            service.setBimJobAmmount(bimJobAmmount);   
+			bimJobAmmount = 0;
+        }
+
+
+        
+        for (var i = 0; i < services.length; i++) {
+            totalJobAmount += services[i].getBimJobAmmount();
+        }
+        
+    }
+}
+
+
+
+// self executed function - main
+var reportDelegate = new ReportDelegate();
+reportDelegate.executeReport();
+
+services_jobs_report = reportDelegate;
+
+current_row = 0;
+total_rows = reportDelegate.getTotalJobAmmount();
+
+//log(Common.Severity.info, "BIRT", "Service-Jobs", "open", "Total rows: " + total_rows, " ", null);
+logInfo("Total rows: " + total_rows);
+logInfo("Open event finish"); 
+
+
+
+
+]]></method>
+            <method name="fetch"><![CDATA[
+if(current_row >= total_rows) {
+	return ( false );
+}
+
+
+var service_idx = 0;
+var serviceNet_idx = 0;
+var job_idx = 0;
+
+calculateServiceJobPosition(current_row);
+
+
+var services = services_jobs_report.getServices();
+var service = services[service_idx];
+var serviceNet = service.getServiceNets()[serviceNet_idx];
+var job =  serviceNet.getJobs()[job_idx];
+
+
+var SERVICE_KEY = service.service_key;
+var SERVICE_NAME = service.service_name;
+var SERVICE_ODAT = service.service_odat;
+var JOB_NAME = (job.job_name != null &amp;&amp; job.job_name != '') ? job.job_name : job.mem_name;
+var JOB_ORDER_ID = job.job_order_id;
+
+
+row["SERVICE_KEY"] = SERVICE_KEY;
+row["SERVICE_NAME"] = SERVICE_NAME;
+row["SERVICE_ODAT"] = SERVICE_ODAT;
+row["JOB_NAME"] = JOB_NAME;
+row["JOB_ORDER_ID"] = JOB_ORDER_ID;
+
+
+current_row = current_row + 1;
+return (true);
+
+
+
+
+function calculateServiceJobPosition(current_row) {
+
+	var bimJobCounter = 0;
+	var services = services_jobs_report.getServices();
+	
+        for (var i = 0; i < services.length; i++) {
+
+            var service = services[i];            
+            
+            if(service.getServiceNets().length == 0) continue;
+            for (var j = 0; j < service.getServiceNets().length; j++) {
+	            
+	            var serviceNet = service.getServiceNets()[j];     
+	            
+	            if(serviceNet.getJobs().length == 0) continue;
+	                   
+            	for (var k = 0; k < serviceNet.getJobs().length; k++) {
+										   		
+						if( bimJobCounter == current_row)
+						{
+							service_idx = i;
+							serviceNet_idx = j;
+							job_idx = k;
+							
+							return;
+						}
+						
+						bimJobCounter++;									
+										
+				}
+            }
+        }
+	
+}
+
+
+]]></method>
+            <method name="close"><![CDATA[birtProxy = null;
+services_jobs = null;
+]]></method>
+        </script-data-set>
+    </data-sets>
+    <page-setup>
+        <simple-master-page name="Simple MasterPage" id="2"/>
+    </page-setup>
+</report>

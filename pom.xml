@@ -115,7 +115,7 @@
 		<dependency>
 			<groupId>org.eclipse.birt.runtime</groupId>
 			<artifactId>org.eclipse.birt.runtime</artifactId>
-			<version>4.5.0a</version>
+			<version>4.4.2</version>
 		</dependency>
  
  		<dependency>		
@@ -144,12 +144,10 @@
 		</dependency>
 
 
-
     </dependencies>
  
-     <build>
+    <build>
         <finalName>MyArtifact</finalName>
-
         <plugins>
 			<!-- embedded Jetty server, for testing -->
 			<plugin>
@@ -182,47 +180,46 @@
                 </configuration>
             </plugin>
  
-        </plugins>
-	    
-    </build>
 
-	<reporting>
-		<plugins>
 			<plugin>
 				<groupId>org.codehaus.mojo</groupId>
 				<artifactId>cobertura-maven-plugin</artifactId>
 				<version>2.7</version>
+				<configuration>
+				<formats>
+					<format>html</format>
+					<format>xml</format>
+				</formats>
+				</configuration>
 			</plugin>
-		</plugins>
-	</reporting>
-
-      <repositories>
-        <repository>
-          <id>central</id>
-          <name>libs-release</name>
-          <url>http://emartifactorycloud.artifactoryonline.com/emartifactorycloud/libs-release</url>
-        </repository>
-      </repositories>
-
-      <pluginRepositories>
-        <pluginRepository>
-          <id>central</id>
-          <name>plugins-release</name>
-          <url>http://emartifactorycloud.artifactoryonline.com/emartifactorycloud/plugins-release</url>
-        </pluginRepository>
-      </pluginRepositories>
 	
 
 
+        </plugins>
+    	</build>
 
 
-	<distributionManagement>
-		<repository>
-			<id>central</id>
-			<name>libs-release</name>
-			<url>http://emartifactorycloud.artifactoryonline.com/emartifactorycloud/libs-release-local</url>
-		</repository>
-	</distributionManagement>
 
- 
+	<profiles>
+		<profile>
+	    	<id>emartifactory</id>
+		    <repositories>
+		        <repository>
+		          <id>central</id>
+		          <name>libs-release</name>
+		          <url>http://emartifactorycloud.artifactoryonline.com/emartifactorycloud/libs-release</url>
+		        </repository>
+		    </repositories>
+		    <pluginRepositories>
+		        <pluginRepository>
+		          <id>central</id>
+		          <name>plugins-release</name>
+		          <url>http://emartifactorycloud.artifactoryonline.com/emartifactorycloud/plugins-release</url>
+		        </pluginRepository>
+		    </pluginRepositories>
+    	</profile>
+	</profiles>		
+	
+
+
  </project>
