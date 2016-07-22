@@ -41,7 +41,7 @@ public class ReportDaoImplTest {
 //	}
 
 
-	// @Test
+	@Test
 	public void testFindByCategoryId() {
 		ReportDaoImpl target = new ReportDaoImpl();
 		target.setDataSource(db);
