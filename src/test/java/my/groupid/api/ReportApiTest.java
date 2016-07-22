@@ -40,7 +40,7 @@ public class ReportApiTest {
 
 	}
 
-	@Test
+	//@Test
 	public void testGetReportsByCategory() throws EmApiException {
 		ResponseEntity<List<ReportDTO>> result = target.getReportsByCategory(1);
 		assertEquals(HttpStatus.OK, result.getStatusCode());
