@@ -34,7 +34,7 @@ public class BirtSerivceTest {
 		birt.init();
 	}
 
-	// @Test
+	@Test
 	public void testGenerateHtml() throws EngineException, UnsupportedEncodingException {
 		String reportName = "c:/work/spring-db-test/reports/alerts.rptdesign";
 		String out = birt.generateHtml(reportName);
